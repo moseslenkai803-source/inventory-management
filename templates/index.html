@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div>
+            <p class="eyebrow">ADMINISTRATION</p>
+            <h1>Inventory Management</h1>
+            <p>Manage stock and find product details.</p>
+        </div>
+        <button id="refresh-button" class="button secondary">Refresh inventory</button>
+    </header>
+
+    <main class="container">
+        <section class="panel">
+            <h2>Current inventory</h2>
+            <p id="inventory-message" role="status">Loading inventory...</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Price (KES)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventory-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Add inventory item</h2>
+            <form id="add-form">
+                <label for="name">Product name</label>
+                <input id="name" name="name" required>
+
+                <label for="category">Category</label>
+                <input id="category" name="category" required>
+
+                <label for="quantity">Quantity</label>
+                <input id="quantity" name="quantity" type="number" min="0" step="1" required>
+
+                <label for="price">Price (KES)</label>
+                <input id="price" name="price" type="number" min="0" step="0.01" required>
+
+                <button class="button" type="submit">Add item</button>
+            </form>
+        </section>
+
+        <section class="panel">
+            <h2>Find product details</h2>
+            <form id="search-form">
+                <label for="search-name">Search OpenFoodFacts by name</label>
+                <input id="search-name" name="name" placeholder="e.g. almond milk" required>
+                <button class="button" type="submit">Search products</button>
+            </form>
+
+            <form id="barcode-form">
+                <label for="barcode">Look up by barcode</label>
+                <input id="barcode" name="barcode" required>
+                <button class="button secondary" type="submit">Look up barcode</button>
+            </form>
+
+            <pre id="search-results" role="status"></pre>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
