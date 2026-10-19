@@ -32,7 +32,7 @@ This application provides a central interface for creating, viewing, updating, a
 The following functionality has been implemented and checked.
 
 | Component | Current status |
-|---|---|
+| --- | --- |
 | Flask application | Implemented |
 | Inventory CRUD API | Implemented |
 | Request validation and error handling | Implemented |
@@ -54,7 +54,7 @@ This table describes the current implementation, not a claim that every possible
 ## 3. Technology Stack
 
 | Technology | Purpose |
-|---|---|
+| --- | --- |
 | Python | Application programming language |
 | Flask | Web framework and REST API |
 | Requests | HTTP communication with OpenFoodFacts |
@@ -262,7 +262,7 @@ Base URL for local development:
 ### Inventory endpoints
 
 | Method | Endpoint | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | GET | `/inventory` | Retrieve all inventory records |
 | GET | `/inventory/<item_id>` | Retrieve one inventory record |
 | POST | `/inventory` | Create an inventory record |
@@ -272,7 +272,7 @@ Base URL for local development:
 ### Product lookup endpoints
 
 | Method | Endpoint | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | GET | `/products/barcode/<barcode>` | Retrieve a product using its barcode |
 | GET | `/products/search?name=<name>` | Search OpenFoodFacts by product name |
 
@@ -346,7 +346,7 @@ The barcode is an example. A lookup can return no result if OpenFoodFacts does n
 The API uses HTTP status codes to communicate the result of a request.
 
 | Status | Meaning in this project |
-|---|---|
+| --- | --- |
 | `200 OK` | A request succeeded |
 | `201 Created` | A resource was created, where used by the endpoint |
 | `400 Bad Request` | Submitted data is invalid or a required search parameter is missing |
@@ -373,7 +373,7 @@ The exact response body and status depend on the route and the failure condition
 An inventory record currently uses these main fields:
 
 | Field | Purpose |
-|---|---|
+| --- | --- |
 | `id` | Application-generated identifier |
 | `name` | Product name |
 | `category` | Product category |
