@@ -17,12 +17,19 @@ This application provides a central interface for creating, viewing, updating, a
 ### Project objectives
 
 - Build a REST API using Flask.
+
 - Implement Create, Read, Update, and Delete (CRUD) operations.
+
 - Validate incoming data and return appropriate HTTP status codes.
+
 - Integrate with the OpenFoodFacts external API.
+
 - Provide a command-line interface for inventory operations.
+
 - Build a browser-based administration interface.
+
 - Write automated tests for API routes and external-service behavior.
+
 - Maintain a clear, testable project structure that can be extended with persistent storage.
 
 ---
@@ -105,12 +112,19 @@ inventory-management/
 The main Flask application.
 
 Responsibilities include:
+
 - Registering HTTP routes.
+
 - Handling inventory requests.
+
 - Validating submitted inventory data.
+
 - Returning JSON responses and HTTP status codes.
+
 - Serving the homepage.
+
 - Exposing product lookup endpoints.
+
 - Translating external-service errors into API responses.
 
 #### `inventory.py`
@@ -124,9 +138,13 @@ The application currently stores records in memory rather than in a database.
 Contains the integration with OpenFoodFacts.
 
 Responsibilities include:
+
 - Fetching a product by barcode.
+
 - Searching products by name.
+
 - Normalizing external product data into a consistent structure.
+
 - Handling request failures and invalid external responses.
 
 #### `cli.py`
@@ -146,11 +164,17 @@ Contains the visual styling and responsive layout for the web interface.
 #### `static/app.js`
 
 Implements browser-side functionality, including:
+
 - Loading and displaying inventory records.
+
 - Submitting new inventory items.
+
 - Editing existing records.
+
 - Deleting records.
+
 - Searching OpenFoodFacts by name.
+
 - Looking up products by barcode.
 
 #### `tests/`
@@ -164,9 +188,13 @@ Contains automated tests for inventory routes, validation, the external product 
 ### Prerequisites
 
 - Python 3.10 or newer.
+
 - `pip`.
+
 - Git.
+
 - Internet access for external product lookups.
+
 - Node.js is useful for checking JavaScript syntax but is not required to run the Flask application.
 
 ### Step 1: Clone the repository
@@ -221,7 +249,7 @@ python app.py
 
 The application should be available at:
 
-http://127.0.0.1:5000
+[http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 Keep the server running while using the browser interface, CLI, or API clients.
 
@@ -229,7 +257,7 @@ Keep the server running while using the browser interface, CLI, or API clients.
 
 Visit:
 
-http://127.0.0.1:5000/
+[http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
 The interface provides inventory display and forms for inventory operations and product lookup.
 
@@ -355,13 +383,21 @@ The API uses HTTP status codes to communicate the result of a request.
 | `502 Bad Gateway` | The external product service could not be used successfully |
 
 The inventory API validates submitted data. Current tests cover cases including:
+
 - Missing required fields.
+
 - Negative quantities.
+
 - Negative prices.
+
 - Non-integer quantities.
+
 - Non-numeric prices.
+
 - Client-supplied identifiers.
+
 - Unknown update fields.
+
 - Requests for records that do not exist.
 
 The exact response body and status depend on the route and the failure condition.
@@ -415,11 +451,17 @@ The service sends a search request and returns a normalized list of matching pro
 The service can return fields such as:
 
 - Barcode.
+
 - Product name.
+
 - Category.
+
 - Brand.
+
 - Ingredients.
+
 - Image URL.
+
 - Source identifier.
 
 Some fields may be missing because the external database is community-maintained and product records vary in completeness.
@@ -433,9 +475,13 @@ A product that is not found is handled separately from an external-service failu
 ### External service limitations
 
 - An internet connection is required.
+
 - Product data may be incomplete or outdated.
+
 - Search results depend on the external service.
+
 - Requests may fail because of connectivity, rate limits, or service availability.
+
 - Tests should mock external HTTP requests so the test suite does not depend on a live internet connection.
 
 ---
@@ -531,43 +577,65 @@ This roadmap guides our work. Items are planned, not claimed as completed.
 ### Phase 1 — Core functionality
 
 - [x] Implement Flask inventory CRUD endpoints.
+
 - [x] Add inventory data validation.
+
 - [x] Integrate OpenFoodFacts lookup by barcode and name.
+
 - [x] Build the CLI.
+
 - [x] Build the browser interface.
+
 - [x] Add automated tests for inventory and product routes.
+
 - [x] Verify Python syntax and JavaScript syntax.
+
 - [ ] Verify all browser interactions manually.
+
 - [ ] Verify the complete CLI workflow against a running server.
 
 ### Phase 2 — Reliability and documentation
 
 - [x] Document setup and current functionality.
+
 - [x] Document API endpoints and examples.
+
 - [ ] Review every requirement in the summative lab rubric.
+
 - [ ] Confirm all required files are committed to Git.
+
 - [ ] Push the final submission to GitHub.
 
 ### Phase 3 — Persistent data
 
 - [ ] Select and configure a database.
+
 - [ ] Design the inventory schema.
+
 - [ ] Add database models and migrations.
+
 - [ ] Replace in-memory storage with database-backed repositories.
+
 - [ ] Add tests for persistence and failure cases.
 
 ### Phase 4 — Administration and security
 
 - [ ] Add authentication and authorization.
+
 - [ ] Improve user-facing error messages and loading states.
+
 - [ ] Add audit information for inventory changes.
+
 - [ ] Add API documentation and security checks.
 
 ### Phase 5 — Deployment and maintenance
 
 - [ ] Configure production environment variables.
+
 - [ ] Add structured logging and operational checks.
+
 - [ ] Deploy to a suitable hosting environment.
+
 - [ ] Document backup, recovery, and maintenance procedures.
 
 ---
@@ -623,15 +691,25 @@ If Git reports conflicts or the remote branch has new commits, stop and inspect 
 Before considering the summative lab ready for submission, verify that:
 
 - [ ] All rubric requirements are accounted for.
+
 - [ ] Inventory CRUD works through the REST API.
+
 - [ ] Validation and error responses behave correctly.
+
 - [ ] OpenFoodFacts lookup works and handles failures.
+
 - [ ] The CLI works against the running server.
+
 - [ ] The browser interface supports its advertised operations.
+
 - [ ] The automated test suite passes.
+
 - [ ] Setup instructions work from a fresh clone.
+
 - [ ] README instructions accurately describe the current implementation.
+
 - [ ] Git contains the intended project files.
+
 - [ ] The final commit is pushed to GitHub.
 
 **Current verified baseline:** 29 automated tests pass, Python compilation passes, JavaScript syntax validation passes, and `git diff --check` reports no whitespace errors. Continue from this baseline and rerun the checks after changes.
